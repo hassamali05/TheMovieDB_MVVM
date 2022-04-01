@@ -15,18 +15,44 @@ class NetworkManager {
     
     static let shared = NetworkManager()
     
-    enum Headers {
-        case movieData
-        case image
+    var baseURL: String {
+        return "https://api.themoviedb.org/3/search/movie"
     }
     
-    func fetchMovieData<T: Codable>(with movieName: String,
-                                    completion: @escaping (T) -> Void) {
-        
+    func getMovieURLRequest(for movie: String) -> URLRequest? {
+        let components = getURLComponents(with: movie)
+        guard let url = components?.url else { return nil }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "GET"
+        return urlRequest
     }
     
-    func fetchMovieImage(with urlString: String,
-                         completion: @escaping () -> Void) {
+    func getURLComponents(with movieName: String) -> URLComponents? {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "api.themoviedb.org"
+        urlComponents.path = "/3/search/movie"
+        urlComponents.queryItems = [URLQueryItem(name: "api_key", value: apiKey),
+        URLQueryItem(name: "query", value: movieName)]
+        return urlComponents
+    }
+    
+    func fetchMovieData(with movieName: String,
+                        completion: @escaping (Data) -> Void,
+                        failure: @escaping () -> Void) {
+        guard let request = getMovieURLRequest(for: movieName) else { return }
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: request) { data, response, error in
+            if error != nil {
+                failure()
+                return
+            }
+            if let data = data {
+                completion(data)
+            }
+            
+        }
+        task.resume()
         
     }
 }

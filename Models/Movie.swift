@@ -7,8 +7,6 @@
 
 // This file was generated from JSON Schema using quicktype, do not modify it directly.
 // To parse the JSON, add this file to your project and do:
-//
-//   let welcome = try? newJSONDecoder().decode(MoviesReponse.self, from: jsonData)
 
 import Foundation
 
@@ -17,7 +15,7 @@ struct Movie: Codable {
     let backdropPath: String?
     let genreIDS: [Int]
     let id: Int
-    let originalLanguage: OriginalLanguage
+    let originalLanguage: String?
     let originalTitle, overview: String
     let popularity: Double
     let posterPath: String?
@@ -40,9 +38,4 @@ struct Movie: Codable {
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
     }
-}
-
-enum OriginalLanguage: String, Codable {
-    case en = "en"
-    case fr = "fr"
 }

@@ -11,6 +11,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var lblNoData: UILabel!
     
     var viewModel: MainViewModel?
     
@@ -25,6 +26,7 @@ class ViewController: UIViewController {
         self.collectionView.dataSource = self
         self.searchBar.delegate = self
         self.viewModel = MainViewModel(delegate: self)
+        self.lblNoData.isHidden = true
     }
     
     func searchMovie(with movieName: String?) {
@@ -70,7 +72,10 @@ extension ViewController: UISearchBarDelegate {
 
 extension ViewController: MainViewModelDelegate {
     
-    func updateUI() {
-        self.collectionView.reloadData()
+    func showDataIfFound(found: Bool) {
+        DispatchQueue.main.async {
+            self.lblNoData.isHidden = found
+            self.collectionView.reloadData()
+        }
     }
 }

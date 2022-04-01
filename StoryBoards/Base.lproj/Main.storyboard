@@ -49,7 +49,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="V2S-hC-hhh">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="movieCell" id="V2S-hC-hhh">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6U7-Im-3ET">
@@ -59,12 +59,19 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No data found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHa-T6-Tbi">
+                                <rect key="frame" x="131" y="433" width="152" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xkj-bw-wjq" secondAttribute="trailing" id="0Z5-oe-E3U"/>
                             <constraint firstItem="xkj-bw-wjq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8ev-Gx-i5U"/>
+                            <constraint firstItem="DHa-T6-Tbi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8lz-NC-JFH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oiz-tF-uvg" secondAttribute="bottom" id="ALb-8C-b5V"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oiz-tF-uvg" secondAttribute="trailing" id="aUq-TC-ZFm"/>
                             <constraint firstItem="oiz-tF-uvg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bLX-qq-Aik"/>
@@ -72,10 +79,12 @@
                             <constraint firstItem="IE3-MX-zgB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="dCw-z0-dE6"/>
                             <constraint firstItem="xkj-bw-wjq" firstAttribute="top" secondItem="IE3-MX-zgB" secondAttribute="bottom" constant="10" id="e3K-yR-kRx"/>
                             <constraint firstItem="IE3-MX-zgB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="e3W-ve-ISN"/>
+                            <constraint firstItem="DHa-T6-Tbi" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="gXD-6l-Geq"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="oiz-tF-uvg" id="kIe-VK-4gQ"/>
+                        <outlet property="lblNoData" destination="DHa-T6-Tbi" id="EJG-da-7Bl"/>
                         <outlet property="searchBar" destination="ru5-rR-gro" id="Tq9-Gq-j4M"/>
                     </connections>
                 </viewController>
