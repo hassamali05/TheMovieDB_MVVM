@@ -25,6 +25,13 @@ class ViewController: UIViewController {
         self.collectionView.dataSource = self
         self.searchBar.delegate = self
     }
+    
+    func searchMovie(with movieName: String?) {
+        guard let movieName = movieName else {
+            return
+        }
+        
+    }
 
 }
 
@@ -45,5 +52,17 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
 extension ViewController: UISearchBarDelegate {
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if (searchBar.text?.count ?? 0) > 1 {
+            searchMovie(with: searchBar.text)
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar,
+                   textDidChange searchText: String) {
+        if (searchBar.text?.count ?? 0) > 1 {
+            searchMovie(with: searchBar.text)
+        }
+    }
 }
 
