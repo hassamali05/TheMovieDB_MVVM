@@ -7,7 +7,20 @@
 
 import Foundation
 
+protocol MainViewModelDelegate {
+    func updateUI()
+}
+
 class MainViewModel {
-    var moviesArray: [MoviesReponse] = []
     
+    var movies: MoviesReponse?
+    var delegate: MainViewModelDelegate
+    
+    init(delegate: MainViewModelDelegate) {
+        self.delegate = delegate
+    }
+    
+    func fetchMovie(with name: String) {
+        
+    }
 }

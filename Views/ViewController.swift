@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let viewModel = MainViewModel()
+    var viewModel: MainViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +24,14 @@ class ViewController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.searchBar.delegate = self
+        self.viewModel = MainViewModel(delegate: self)
     }
     
     func searchMovie(with movieName: String?) {
         guard let movieName = movieName else {
             return
         }
-        
+        viewModel?.fetchMovie(with: movieName)
     }
 
 }
@@ -39,7 +40,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return viewModel.moviesArray.count
+        //TODO: try with viewModel?.movies?.totalResults
+        return viewModel?.movies?.results.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -66,3 +68,9 @@ extension ViewController: UISearchBarDelegate {
     }
 }
 
+extension ViewController: MainViewModelDelegate {
+    
+    func updateUI() {
+        self.collectionView.reloadData()
+    }
+}
