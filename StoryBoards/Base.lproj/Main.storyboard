@@ -17,8 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movies Database" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IE3-MX-zgB">
+                                <rect key="frame" x="141.5" y="64" width="131" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xkj-bw-wjq" userLabel="searchView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="95" width="414" height="100"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ru5-rR-gro">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="51"/>
@@ -34,7 +40,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oiz-tF-uvg">
-                                <rect key="frame" x="0.0" y="144" width="414" height="718"/>
+                                <rect key="frame" x="0.0" y="195" width="414" height="667"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1ob-LN-BXh">
                                     <size key="itemSize" width="128" height="128"/>
@@ -58,14 +64,20 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xkj-bw-wjq" secondAttribute="trailing" id="0Z5-oe-E3U"/>
-                            <constraint firstItem="xkj-bw-wjq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1lh-QK-Oxm"/>
                             <constraint firstItem="xkj-bw-wjq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8ev-Gx-i5U"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oiz-tF-uvg" secondAttribute="bottom" id="ALb-8C-b5V"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oiz-tF-uvg" secondAttribute="trailing" id="aUq-TC-ZFm"/>
                             <constraint firstItem="oiz-tF-uvg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bLX-qq-Aik"/>
                             <constraint firstItem="oiz-tF-uvg" firstAttribute="top" secondItem="xkj-bw-wjq" secondAttribute="bottom" id="c8I-lq-VfF"/>
+                            <constraint firstItem="IE3-MX-zgB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="dCw-z0-dE6"/>
+                            <constraint firstItem="xkj-bw-wjq" firstAttribute="top" secondItem="IE3-MX-zgB" secondAttribute="bottom" constant="10" id="e3K-yR-kRx"/>
+                            <constraint firstItem="IE3-MX-zgB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="e3W-ve-ISN"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="oiz-tF-uvg" id="kIe-VK-4gQ"/>
+                        <outlet property="searchBar" destination="ru5-rR-gro" id="Tq9-Gq-j4M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
