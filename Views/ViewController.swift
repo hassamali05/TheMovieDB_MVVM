@@ -48,7 +48,9 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as? MovieCell else { return UICollectionViewCell() }
+        cell.upDateUI(title: viewModel?.movies?.results[indexPath.row].originalTitle ?? "Nil", description: viewModel?.movies?.results[indexPath.row].releaseDate ?? "Nil", image: viewModel?.movies?.results[indexPath.row].posterPath ?? "Nil")
+        return cell
     }
     
     

@@ -16,7 +16,7 @@ class NetworkManager {
     static let shared = NetworkManager()
     
     var baseURL: String {
-        return "https://api.themoviedb.org/3/search/movie"
+        return "api.themoviedb.org"
     }
     
     func getMovieURLRequest(for movie: String) -> URLRequest? {
@@ -30,7 +30,7 @@ class NetworkManager {
     func getURLComponents(with movieName: String) -> URLComponents? {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
-        urlComponents.host = "api.themoviedb.org"
+        urlComponents.host = baseURL
         urlComponents.path = "/3/search/movie"
         urlComponents.queryItems = [URLQueryItem(name: "api_key", value: apiKey),
         URLQueryItem(name: "query", value: movieName)]
