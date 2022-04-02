@@ -19,6 +19,10 @@ class NetworkManager {
         return "api.themoviedb.org"
     }
     
+    var imageURL: String {
+        return "https://image.tmdb.org/t/p/w220_and_h330_face"
+    }
+    
     func getMovieURLRequest(for movie: String) -> URLRequest? {
         let components = getURLComponents(with: movie)
         guard let url = components?.url else { return nil }
@@ -48,11 +52,21 @@ class NetworkManager {
                 return
             }
             if let data = data {
+                self.printResponse(data: data)
                 completion(data)
             }
             
         }
         task.resume()
         
+    }
+    
+    func printResponse(data: Data) {
+        do {
+            let parsedData = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
+            print(parsedData)
+        } catch {
+            print("Couldn't parse")
+        }
     }
 }

@@ -43,17 +43,33 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         //TODO: try with viewModel?.movies?.totalResults
-        return viewModel?.movies?.results.count ?? 0
+        return viewModel?.movies?.results?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as? MovieCell else { return UICollectionViewCell() }
-        cell.upDateUI(title: viewModel?.movies?.results[indexPath.row].originalTitle ?? "Nil", description: viewModel?.movies?.results[indexPath.row].releaseDate ?? "Nil", image: viewModel?.movies?.results[indexPath.row].posterPath ?? "Nil")
+        let item = viewModel?.movies?.results?[indexPath.row]
+        cell.upDateUI(title: item?.originalTitle ?? "Nil",
+                      description: item?.releaseDate ?? "Nil",
+                      image: item?.posterPath ?? "Nil")
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let height = 120.0
+        let padding: CGFloat =  50
+        let width = (self.collectionView.frame.width - padding)/2
+        return CGSize(width: width, height: height)
+    }
     
+    
+}
+
+extension ViewController: UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//
+//    }
 }
 
 extension ViewController: UISearchBarDelegate {

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "dummyImage.jpeg",
+      "filename" : "Default_Image_Thumbnail@1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "dummyImage-1.jpeg",
+      "filename" : "Default_Image_Thumbnail@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "dummyImage-2.jpeg",
+      "filename" : "Default_Image_Thumbnail@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
