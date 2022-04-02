@@ -136,7 +136,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="dummyImage" width="110" height="165"/>
+        <image name="dummyImage" width="164.5" height="130.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

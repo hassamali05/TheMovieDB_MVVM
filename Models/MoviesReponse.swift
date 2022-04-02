@@ -10,7 +10,8 @@ import Foundation
 struct MoviesReponse: Codable {
     let page: Int?
     let results: [Movie]?
-    let totalPages, totalResults: Int?
+    let totalPages: Int?
+    let totalResults: Int?
 
     enum CodingKeys: String, CodingKey {
         case page, results
