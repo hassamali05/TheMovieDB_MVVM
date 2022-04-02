@@ -48,7 +48,9 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as? MovieCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell",
+                                                            for: indexPath) as? MovieCell
+        else { return UICollectionViewCell() }
         let item = viewModel?.movies?.results?[indexPath.row]
         cell.upDateUI(title: item?.originalTitle ?? "Nil",
                       description: item?.releaseDate ?? "Nil",
@@ -59,7 +61,9 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = 120.0
         let padding: CGFloat =  50
         let width = (self.collectionView.frame.width - padding)/2
