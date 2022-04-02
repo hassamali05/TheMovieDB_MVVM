@@ -52,7 +52,7 @@ class NetworkManager {
                 return
             }
             if let data = data {
-                self.printResponse(data: data)
+//                self.printResponse(data: data)
                 completion(data)
             }
             

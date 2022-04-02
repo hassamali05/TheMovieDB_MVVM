@@ -83,6 +83,9 @@ extension ViewController: UISearchBarDelegate {
                    textDidChange searchText: String) {
         if (searchBar.text?.count ?? 0) > 1 {
             searchMovie(with: searchBar.text)
+        } else {
+            // when clear button pressed
+            showDataIfFound(found: false)
         }
     }
 }
@@ -91,8 +94,8 @@ extension ViewController: MainViewModelDelegate {
     
     func showDataIfFound(found: Bool) {
         DispatchQueue.main.async {
-            self.lblNoData.isHidden = found
             self.collectionView.reloadData()
+            self.lblNoData.isHidden = found
         }
     }
 }
