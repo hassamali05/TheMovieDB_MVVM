@@ -56,20 +56,15 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         return cell
     }
     
+}
+
+extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = 120.0
         let padding: CGFloat =  50
         let width = (self.collectionView.frame.width - padding)/2
         return CGSize(width: width, height: height)
     }
-    
-    
-}
-
-extension ViewController: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//
-//    }
 }
 
 extension ViewController: UISearchBarDelegate {
